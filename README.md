@@ -1,2 +1,2 @@
-# c-_Pokemon
+# c++_Pokemon
 Cours de C++
