@@ -9,7 +9,7 @@ Pokemon Pokeball::getPokemonByIndex(int index) const{
         //On copie le Pokémon à l'index spécifié
         Pokemon p = pokemons[index];
         //On retire le Pokémon de la Pokeball
-        pokemons.erase(pokemons.begin() + index); // "pokemons.erase" attend un iterator, donc on utilise "pokemons.begin() + index"
+        //pokemons.erase(index); // "pokemons.erase" attend un iterator, donc on utilise "pokemons.begin() + index"
         return p; //on retourne le Pokémon retiré
     }
     throw std::out_of_range("Index out of range"); //index invalide
@@ -20,7 +20,7 @@ Pokemon Pokeball::getPokemonByName(const std::string& name) const{
     for (auto it = pokemons.begin(); it != pokemons.end(); ++it){ //On parcourt la liste des Pokémon dans la Pokeball
         if (it->getName()==name){ // Si le nom du Pokémon correspond
             Pokemon p = *it; // On copie le Pokémon trouvé
-            pokemons.erase(it); // On retire le Pokémon de la Pokeball
+            //pokemons.erase(it); // On retire le Pokémon de la Pokeball
             return p; // On retourne le Pokémon retiré
         }
     }

@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Pokemon.hpp"
+#include "Pokedex.hpp"
 
 
 using std::vector;
@@ -37,6 +38,10 @@ int main() {
 
       pokedex[15]->scream();
       //pokedex.at(15)->scream();*/
+
+    Pokedex* pokedex = Pokedex::getInstance("pokedex.csv");
+
+    pokedex -> displayPokemonList();
     return 0;
 }
 

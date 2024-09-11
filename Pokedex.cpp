@@ -4,7 +4,7 @@
 Pokedex* Pokedex::instance = nullptr;
 
 Pokedex::Pokedex(const std::string& nomFichier){ // Constructeur privé qui lit le fichier CSV pour charger les Pokémon
-    lireCSV(nomFichier);
+    lireCSV("./ressources/" + nomFichier);
 }
 
 //attention au multi-threading !! le singleton ne marche pas bien (plusieurs joueurs en réseau)
@@ -39,6 +39,7 @@ void Pokedex::lireCSV(const std::string& nomFichier){
         return;
     }
     std::string ligne;
+    std::getline(fichier, ligne);
     while (std::getline(fichier, ligne)){
         std::stringstream ss(ligne);
         std::string cellule;
@@ -46,8 +47,13 @@ void Pokedex::lireCSV(const std::string& nomFichier){
         while (std::getline(ss, cellule,',')){
             donneesLigne.push_back(cellule);
         }
-        if (donneesLigne.size()==6){
-            Pokemon p(donneesLigne[0], std::stoi(donneesLigne[1]), std::stod(donneesLigne[2]), std::stod(donneesLigne[3]), std::stod(donneesLigne[4]), std::stoi(donneesLigne[5]));
+        if (donneesLigne.size()==13){
+            Pokemon p(donneesLigne.at(1), 
+            std::stoi(donneesLigne.at(0)), 
+            std::stod(donneesLigne.at(5)), 
+            std::stod(donneesLigne.at(6)), 
+            std::stod(donneesLigne.at(7)), 
+            std::stod(donneesLigne.at(11)));
             pokemons.push_back(p);
         }
     }

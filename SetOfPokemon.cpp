@@ -5,7 +5,7 @@
 void SetOfPokemon::displayPokemonList() const {
     std::cout<<"Liste des Pokemon:"<<std::endl;
     for (size_t i = 0; i<pokemons.size();++i){
-        std::cout<<i<<": "<<pokemons[i].getName()<<std::endl;
+        std::cout<<i+1<<": "<<pokemons[i].getName()<<std::endl;
     }
 }
 
