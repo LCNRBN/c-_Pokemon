@@ -5,17 +5,24 @@
 void SetOfPokemon::displayPokemonList() const {
     std::cout<<"Liste des Pokemon:"<<std::endl;
     for (size_t i = 0; i<pokemons.size();++i){
-        std::cout<<i+1<<": "<<pokemons[i].getName()<<std::endl;
+        //std::cout<<i+1<<": "<<pokemons[i].getName()<<std::endl;
+
+        //version ptr*
+        std::cout << i+1 << ": " << pokemons[i]->getName() << std::endl;
     }
 }
 
+//version ptr*
+SetOfPokemon::SetOfPokemon() {
+    // Initialisation si nécessaire
+}
+SetOfPokemon::~SetOfPokemon() {
+    // Destruction si nécessaire, en particulier si la classe gère des ressources
+}
 
-//Potential Concrete Derived Class ????
-//Since SetOfPokemon is an abstract class, you will need to create a derived class to implement the abstract methods.
-
-// void SetOfPokemon::displayPokemonList() const {
-//     std::cout << "Pokemon List:" << std::endl;
-//     for (const auto& pokemon : pokemons) {
-//         pokemon.displayInfo();  // Call Pokemon's displayInfo method
+// SetOfPokemon::~SetOfPokemon(){
+//     for (Pokemon* p : pokemons){
+//         delete p;
 //     }
+//     pokemons.clear(); //vide vecteur
 // }

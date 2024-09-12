@@ -15,31 +15,35 @@ Pokedex* Pokedex::getInstance(const std::string& nomFichier){
     return instance;
 }
 
-Pokemon Pokedex::getPokemonByIndex(int index) const{
+//version ptr*
+Pokemon* Pokedex::getPokemonByIndex(int index) {
     if (index>=0 && index <pokemons.size()){
         return pokemons[index];
     }
     throw std::out_of_range("Index out of range");
 }
-
-Pokemon Pokedex::getPokemonByName(const string& name) const{
-    for (const auto& pokemon : pokemons){
-        if (pokemon.getName()==name){
-            return pokemon;
+Pokemon* Pokedex::getPokemonByName(const string& name) {
+    // for (const auto& pokemon : pokemons){
+    //     if (pokemon.getName()==name){
+    //         return pokemon;
+    //     }
+    // }
+    for (auto& p : pokemons){
+        if (p->getName() == name){
+            return p; // ptr vers le pokemon
         }
     }
     throw std::invalid_argument("Pokemon not found");
 }
 
 void Pokedex::lireCSV(const std::string& nomFichier){
-    //nouveau code
     std::ifstream fichier(nomFichier);
     if(!fichier.is_open()){
         std::cerr << "Impossible d'ouvrir le fichier" << nomFichier << std::endl;
         return;
     }
     std::string ligne;
-    std::getline(fichier, ligne);
+    std::getline(fichier, ligne); //skip le header
     while (std::getline(fichier, ligne)){
         std::stringstream ss(ligne);
         std::string cellule;
@@ -48,16 +52,34 @@ void Pokedex::lireCSV(const std::string& nomFichier){
             donneesLigne.push_back(cellule);
         }
         if (donneesLigne.size()==13){
-            Pokemon p(donneesLigne.at(1), 
-            std::stoi(donneesLigne.at(0)), 
-            std::stod(donneesLigne.at(5)), 
-            std::stod(donneesLigne.at(6)), 
-            std::stod(donneesLigne.at(7)), 
-            std::stod(donneesLigne.at(11)));
+            // Pokemon p(donneesLigne.at(1), 
+            // std::stoi(donneesLigne.at(0)), 
+            // std::stod(donneesLigne.at(5)), 
+            // std::stod(donneesLigne.at(6)), 
+            // std::stod(donneesLigne.at(7)), 
+            // std::stod(donneesLigne.at(11)));
+            // pokemons.push_back(p);// ajout du pointeur au vecteur
+
+            //version ptr*
+            Pokemon* p = new Pokemon(donneesLigne.at(1),
+                std::stoi(donneesLigne.at(0)), 
+                std::stod(donneesLigne.at(5)), 
+                std::stod(donneesLigne.at(6)), 
+                std::stod(donneesLigne.at(7)), 
+                std::stod(donneesLigne.at(11)));
             pokemons.push_back(p);
         }
     }
     fichier.close();
 }
 
-
+//version ptr*
+Pokedex::~Pokedex(){
+    for (Pokemon* p : pokemons){
+        delete p;//libère chaque ptr*
+    }
+}
+void Pokedex::deleteInstance(){
+    delete instance;
+    instance = nullptr;
+}

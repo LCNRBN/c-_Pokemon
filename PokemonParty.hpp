@@ -12,10 +12,11 @@ class PokemonParty : public SetOfPokemon { //HERITAGE
         PokemonParty(const std::vector<string>& names, Pokeball& pokeball); //Constructeur qui prend un vecteur de noms et retire les Pokémon du Pokeball en les ajoutant à la Party
 
         //Fonction
-        Pokemon getPokemonByIndex(int index) const override; //Fonction pour obtenir un Pokémon par index (à partir de la liste de la Party)
-        Pokemon getPokemonByName(const string& name) const override; //Fonction pour obtenir un Pokémon par nom (à partir de la liste de la Party)
-
-        void addPokemon(Pokemon& pokemon); //Fonction pour ajouter un Pokémon à la Party
+        //version ptr*
+        Pokemon* getPokemonByIndex(int index) override; //Fonction pour obtenir un Pokémon par index (à partir de la liste de la Party)
+        Pokemon* getPokemonByName(const string& name) override; //Fonction pour obtenir un Pokémon par nom (à partir de la liste de la Party)
+        //void addPokemon(Pokemon& pokemon); //Fonction pour ajouter un Pokémon à la Party
+        void addPokemon(Pokemon* pokemon);
 };
 
 #endif //POKEBALLPARTY_HPP

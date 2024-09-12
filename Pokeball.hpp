@@ -9,9 +9,13 @@ class Pokeball : public SetOfPokemon{ //HERITAGE
         // CONSTRUCTEUR
         Pokeball()=default; //constructeur par défaut
         //Pokeball(){};
+
         // FONCTIONS
-        Pokemon getPokemonByIndex(int index) override; //Fonction pour obtenir un Pokémon par index et le retirer de la Pokeball
-        Pokemon getPokemonByName(const string& name) override; //Fonction pour obtenir un Pokémon par nom et le retirer de la Pokeball
+        // version avec ptr*
+        Pokemon* getPokemonByIndex(int index) override; //Fonction pour obtenir un Pokémon par index et le retirer de la Pokeball
+        Pokemon* getPokemonByName(const string& name) override; //Fonction pour obtenir un Pokémon par nom et le retirer de la Pokeball
+        Pokemon* removePokemonAtIndex(int index);
+        Pokemon* removePokemonByName(const std::string& name);
 };
 
 #endif //POKEBALL_HPP

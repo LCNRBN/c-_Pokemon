@@ -16,12 +16,17 @@ class Pokedex : public SetOfPokemon{
     
     public:
         static Pokedex* getInstance(const std::string& nomFichier); //Méthode pour obtenir l'instance unique du Pokedex
+        
         // Méthodes pour obtenir un Pokémon par index ou par nom
-        Pokemon getPokemonByIndex(int index) const override;
-        Pokemon getPokemonByName(const std::string& name) const override;
+        //version ptr*
+        Pokemon* getPokemonByIndex(int index) override;
+        Pokemon* getPokemonByName(const std::string& name) override;
 
         void lireCSV(const std::string& nomFichier); // Méthode pour lire un fichier CSV et charger les Pokémon dans le Pokedex
 
+        //version ptr*
+        static void deleteInstance();//méthode détruire instance pokédex
+        virtual ~Pokedex();
 };
 
 #endif //POKEDEX_HPP
