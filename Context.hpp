@@ -34,6 +34,9 @@ class Context{
     this->state_ = state;
     this->state_->set_context(this);
   }
+  State* getCurrentState() const {
+      return state_;
+  }
   /**
    * The Context delegates part of its behavior to the current State object.
    */

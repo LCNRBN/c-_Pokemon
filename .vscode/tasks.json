@@ -7,14 +7,26 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                //"${file}",
+                "${workspaceFolder}/main.cpp", //
                 "${workspaceFolder}/Pokemon.cpp",
                 "${workspaceFolder}/SetOfPokemon.cpp",
                 "${workspaceFolder}/Pokedex.cpp",
                 "${workspaceFolder}/Pokeball.cpp",
                 "${workspaceFolder}/PokemonParty.cpp",
+
+                "${workspaceFolder}/Context.cpp",
+                "${workspaceFolder}/State.cpp",
+                "${workspaceFolder}/Wait.cpp",
+                "${workspaceFolder}/Init.cpp",
+                "${workspaceFolder}/Explor.cpp",
+                "${workspaceFolder}/ExplorDanger.cpp",
+
+                "${workspaceFolder}/Map.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/pokemon_game", //
+                "-lncurses",
+                //"${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}"
