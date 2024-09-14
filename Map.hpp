@@ -33,9 +33,9 @@ public:
         for (int i = 0; i < grid.size(); ++i) {
             for (int j = 0; j < grid[i].size(); ++j) {
                 if (i == playerY && j == playerX) {
-                    std::cout << "J "; // Représente le joueur par "J"
+                    std::cout << "J "; // joueur : le caractère "J"
                 } else {
-                    std::cout << grid[i][j] << " "; // Affiche la carte
+                    std::cout << grid[i][j] << " "; // Affiche carte
                 }
             }
             std::cout << std::endl;
@@ -47,10 +47,10 @@ public:
         int newY = playerY;
 
         // Utilisation des caractères pour indiquer la direction
-        if (direction == '^') newY--;  // Haut
-        else if (direction == 'v') newY++;  // Bas
-        else if (direction == '<') newX--;  // Gauche
-        else if (direction == '>') newX++;  // Droite
+        if (direction == '^') newY--;
+        else if (direction == 'v') newY++;
+        else if (direction == '<') newX--;
+        else if (direction == '>') newX++;
 
         // Vérifie si le mouvement est valide (dans les limites et pas de rocher)
         if (isValidMove(newX, newY)) {

@@ -44,22 +44,22 @@ int main() {
 
     char input;
     while (true) {
-        // Afficher la carte avec le joueur
+        // affiche carte et joueur
         gameMap.display();
         std::cout << "Utilisez ^ pour haut, v pour bas, < pour gauche, > pour droite : ";
-        std::cin >> input; // Lecture de l'entrée utilisateur
+        std::cin >> input;
 
-        // Traiter le mouvement du joueur
+        // mouvement joueur
         if (input == '^' || input == 'v' || input == '<' || input == '>') {
             gameMap.movePlayer(input, context);
         } else {
             std::cout << "Entrée invalide, veuillez réessayer." << std::endl;
         }
 
-        // Sortir si le jeu passe à l'état ExplorDanger
+        // Sortir si ExplorDanger
         if (typeid(*context->getCurrentState()).name() == typeid(ExplorDanger).name()) {
             std::cout << "Danger détecté! Un Pokémon sauvage pourrait apparaître!" << std::endl;
-            break; // Terminer la boucle de jeu
+            break; //sortir
         }
     }
 
