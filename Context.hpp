@@ -30,7 +30,7 @@ class Context{
   void TransitionTo(State *state) {
     std::cout << "Context: Transition to " << typeid(*state).name() << ".\n";
     if (this->state_ != nullptr)
-      delete this->state_;
+      delete this->state_; //détruit l'état
     this->state_ = state;
     this->state_->set_context(this);
   }

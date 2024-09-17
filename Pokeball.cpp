@@ -1,5 +1,7 @@
 #include "Pokeball.hpp"
+
 #include  <stdexcept>
+#include <iostream>
 
 // FONCTIONS
 
@@ -54,3 +56,15 @@ Pokemon* Pokeball::removePokemonByName(const std::string& name) {
     }
     throw std::invalid_argument("Pokemon not found");
 }
+
+//version capture
+bool Pokeball::isEmpty() const {
+    return pokemons.empty();
+}
+void Pokeball::addPokemon(Pokemon* pokemon){
+    if (isEmpty()) { //une Pokeball ne peut contenir qu'un Pokémon à la fois
+        pokemons.push_back(pokemon);
+    } else {
+        std::cout << "La Pokeball contient déjà un Pokémon!\n";
+    }
+} 

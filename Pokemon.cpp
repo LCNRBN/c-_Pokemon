@@ -58,3 +58,7 @@ void Pokemon::sustainDamage(int value) {
 string Pokemon::getName() const {
     return name;
 }
+
+double Pokemon::getHp() const {
+    return hitPoint;
+}

@@ -15,6 +15,8 @@ class Pokedex : public SetOfPokemon{
         Pokedex(const std::string& nomFichier); // constructeur privé pour le singleton (empêche la création de plusieurs Pokedex)
     
     public:
+
+        int totalnbOfPokemon = 800;
         static Pokedex* getInstance(const std::string& nomFichier); //Méthode pour obtenir l'instance unique du Pokedex
         
         // Méthodes pour obtenir un Pokémon par index ou par nom

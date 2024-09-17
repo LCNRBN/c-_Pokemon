@@ -16,11 +16,18 @@ using std::vector;
 int main() {
     std::cout << "******* Pokemon Start *******" << std::endl;
     
+    //version capture
+    Pokedex* pokedex = Pokedex::getInstance("pokedex.csv");
+
     //client code
     std::srand(std::time(nullptr));//initialise la génération de nb aléa
     Context *context = new Context(new Wait);
     context->Request1();//démarrer jeu
-    Map gameMap;
+    
+    //Map gameMap;
+    //version capture
+    Map gameMap(pokedex);
+
     context->Request1();//de Init à Explor
     //context->Request1();//de Explor à ExplorDanger
 
@@ -34,11 +41,8 @@ int main() {
     mew2.attack(mew);
     mew2.attack(mew);
     mew2.attack(mew);
-
     std::cout <<"Nombre de Pokemon en memoire : " << Pokemon::getNumberOfPokemon() << std::endl;
     std::cout <<"Nombre de Pokemon en memoire : " << mew.getNumberOfPokemon() << std::endl;
-
-    Pokedex* pokedex = Pokedex::getInstance("pokedex.csv");
 
     //pokedex->displayPokemonList();
 
@@ -46,7 +50,7 @@ int main() {
     while (true) {
         // affiche carte et joueur
         gameMap.display();
-        std::cout << "Utilisez ^ pour haut, v pour bas, < pour gauche, > pour droite : ";
+        std::cout << "Entrez la direction (<, >, ^, v) pour vous déplacer : ";
         std::cin >> input;
 
         // mouvement joueur
@@ -56,14 +60,18 @@ int main() {
             std::cout << "Entrée invalide, veuillez réessayer." << std::endl;
         }
 
-        // Sortir si ExplorDanger
+        //à retirer :  Sortir si ExplorDanger
         if (typeid(*context->getCurrentState()).name() == typeid(ExplorDanger).name()) {
-            std::cout << "Danger détecté! Un Pokémon sauvage pourrait apparaître!" << std::endl;
-            break; //sortir
+            //std::cout << "Danger détecté! Un Pokémon sauvage pourrait apparaître!" << std::endl;
+            //version capture
+            //break; //sortir
         }
     }
 
     delete context;
+
+    //version capture
+    Pokedex::deleteInstance();
 
     return 0;
 }

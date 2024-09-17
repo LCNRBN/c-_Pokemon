@@ -28,6 +28,7 @@ public:
     void scream();
     void displayInfo();
     string getName() const; //méthode pour obtenir le nom
+    double getHp() const;
 
     static int getNumberOfPokemon();
 
