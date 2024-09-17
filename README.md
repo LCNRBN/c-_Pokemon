@@ -1,6 +1,6 @@
 # c++_Pokemon
 Cours de C++
 
-git pull origin main --rebase
-git remote set-url origin https://token@github.com/LCNRBN/c-_Pokemon.git
-git push -u origin main
+Le dresseur de Pokémon peut se déplacer sur la MAP.
+S'il est proche d'une haute herbe, alors il peut capturer un Pokémon de son choix (jusqu'à 6 maximum).
+S'il est proche du X sur la MAP, alors il peut défier en arène un Pokémon aléatoire.
